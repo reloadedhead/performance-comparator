@@ -1,1 +1,10 @@
-{}
+{
+  "sidebar": {
+    "item": {
+      "arithmetic": "Media Aritmética",
+      "weighted": "Media Aritmética Ponderada",
+      "geometric": "Media Geométrica",
+      "class": "Sitio de la Cátedra"
+    }
+  }
+}

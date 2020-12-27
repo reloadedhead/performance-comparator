@@ -6,6 +6,7 @@ import { useMediaQuery, createMuiTheme, MuiThemeProvider } from '@material-ui/co
 import AppShell from './components/app-shell';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
+import { BrowserRouter } from 'react-router-dom';
 
 const WrappedApp = () => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -24,7 +25,9 @@ const WrappedApp = () => {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <AppShell />
+      <BrowserRouter>
+        <AppShell />
+      </BrowserRouter>
     </MuiThemeProvider>
   )
 }

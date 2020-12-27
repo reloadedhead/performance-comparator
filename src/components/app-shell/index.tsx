@@ -2,6 +2,7 @@ import { makeStyles, Theme, createStyles, CssBaseline } from '@material-ui/core'
 import React from 'react';
 import Header from './header';
 import ContentRouter from './router';
+import Sidebar from './sidebar';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,12 +20,13 @@ const AppShell = () => {
     <>
       <CssBaseline />
       <Header />
+      <Sidebar />
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <ContentRouter />
       </main>
     </>
-  )
+  );
 };
 
 export default AppShell;
