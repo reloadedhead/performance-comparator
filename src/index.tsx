@@ -1,13 +1,35 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { useMediaQuery, createMuiTheme, MuiThemeProvider } from '@material-ui/core';
+import AppShell from './components/app-shell';
+
+const WrappedApp = () => {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const theme = useMemo(
+    () =>
+      createMuiTheme({
+        palette: {
+          primary: {
+            main: '#183F6D',
+          },
+          type: prefersDarkMode ? 'dark' : 'light',
+        },
+      }),
+    [prefersDarkMode]
+  );
+
+  return (
+    <MuiThemeProvider theme={theme}>
+      <AppShell />
+    </MuiThemeProvider>
+  )
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <div>
-      Hello World!
-    </div>
+    <WrappedApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
