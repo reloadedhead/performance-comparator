@@ -29,8 +29,8 @@ const WrappedApp = () => {
         <AppShell />
       </BrowserRouter>
     </MuiThemeProvider>
-  )
-}
+  );
+};
 
 ReactDOM.render(
   <React.StrictMode>
