@@ -4,45 +4,47 @@ import React, { createContext, ReactNode, useContext, useState } from 'react';
 import { Benchmark } from '../types';
 
 interface BenchmarksContext {
-  machines: string[];
-  addMachine: (newMachine: string) => void;
-  deleteMachine: (machine: string) => void;
+  numberOfMachines: number;
   benchmarks: Benchmark[];
   addBenchmark: (newBench: Benchmark) => void;
   deleteBenchmark: (bench: number) => void;
+  getArithmeticMedian: (forMachine: number) => number;
 }
 
 const initialState: BenchmarksContext = {
-  machines: [],
-  addMachine: (_newMachine: string) => {},
-  deleteMachine: (_machine: string) => {},
+  numberOfMachines: 3,
   benchmarks: [],
   addBenchmark: (_newBench: Benchmark) => {},
   deleteBenchmark: (_bench: number) => {},
+  getArithmeticMedian: (forMachine: number) => 0,
 };
 
 const BenchmarksContext = createContext(initialState);
 
 export const BenchmarksProvider = ({ children }: { children: ReactNode }) => {
-  const [machines, setMachines] = useState(['Máquina A', 'Máquina B', 'Máquina C']);
+  const [numberOfMachines, setNumberOfMachines] = useState(3);
   const [benchmarks, setBenchmarks] = useState([
     [100, 50, 150],
     [200, 150, 50],
     [400, 700, 400],
   ]);
 
-  const addMachine = (newMachine: string) => setMachines(m => [...m, newMachine]);
-
   const addBenchmark = (newBench: Benchmark) => setBenchmarks(b => [...b, newBench]);
 
   const deleteBenchmark = (benchmarkNumber: number) =>
     setBenchmarks(b => b.filter((_, i) => i !== benchmarkNumber));
 
-  const deleteMachine = (machine: string) => setMachines(m => m.filter(_ => _ !== machine));
+  const getArithmeticMedian = (forMachine: number) => {
+    let median = 0;
+    benchmarks.forEach(b => {
+      median += b[forMachine];
+    });
+    return median / benchmarks.length;
+  };
 
   return (
     <BenchmarksContext.Provider
-      value={{ addBenchmark, addMachine, deleteBenchmark, deleteMachine, machines, benchmarks }}
+      value={{ addBenchmark, deleteBenchmark, benchmarks, numberOfMachines, getArithmeticMedian }}
     >
       {children}
     </BenchmarksContext.Provider>
