@@ -10,6 +10,8 @@ import { Benchmark } from '../../types';
 import TableToolbar, { ToolbarAction } from './table-toolbar';
 import SettingsIcon from '@material-ui/icons/Settings';
 import EditMachines from '../modals/edit-machines';
+import EditMenu from '../menus/edit-menus';
+import EditBenchmarks from '../modals/edit-benchmarks';
 
 interface TableProps {
   data: Benchmark[];
@@ -17,12 +19,31 @@ interface TableProps {
 }
 
 export default function BenchmarkTable({ data, machines }: TableProps) {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [openEditMachines, setOpenEditMachines] = useState(false);
+  const [openEditBenchmarks, setOpenEditBenchmarks] = useState(false);
 
-  const handleOpenEditMachines = () => setOpenEditMachines(true);
+  const handleCloseEditMenu = () => setAnchorEl(null);
+  const handleOpenEditMachines = () => {
+    setOpenEditMachines(true);
+    handleCloseEditMenu();
+  };
+  const handleOpenEditBenchmarks = () => {
+    setOpenEditBenchmarks(true);
+    handleCloseEditMenu();
+  };
+
+  const handleOpenEditPopover = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const editMenuOptions = [
+    { label: 'Editar Máquinas', handler: handleOpenEditMachines },
+    { label: 'Editar Benchmarks', handler: handleOpenEditBenchmarks },
+  ];
 
   const toolbardActions: ToolbarAction[] = [
-    { title: 'Editar Máquinas', icon: <SettingsIcon />, handler: handleOpenEditMachines },
+    { title: 'Editar', icon: <SettingsIcon />, handler: handleOpenEditPopover },
   ];
 
   return (
@@ -50,7 +71,9 @@ export default function BenchmarkTable({ data, machines }: TableProps) {
           ))}
         </TableBody>
       </Table>
+      <EditMenu anchorEl={anchorEl} handleClose={handleCloseEditMenu} options={editMenuOptions} />
       <EditMachines open={openEditMachines} setOpen={setOpenEditMachines} />
+      <EditBenchmarks open={openEditBenchmarks} setOpen={setOpenEditBenchmarks} />
     </TableContainer>
   );
 }

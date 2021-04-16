@@ -29,7 +29,7 @@ const useToolbarStyles = makeStyles((theme: Theme) =>
 export interface ToolbarAction {
   title: string;
   icon: JSX.Element;
-  handler: () => void;
+  handler: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 interface Toolbar {
   isEmpty?: boolean;
