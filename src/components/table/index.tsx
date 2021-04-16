@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -7,7 +7,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Benchmark } from '../../types';
-import TableToolbar from './table-toolbar';
+import TableToolbar, { ToolbarAction } from './table-toolbar';
+import SettingsIcon from '@material-ui/icons/Settings';
+import EditMachines from '../modals/edit-machines';
 
 interface TableProps {
   data: Benchmark[];
@@ -15,9 +17,17 @@ interface TableProps {
 }
 
 export default function BenchmarkTable({ data, machines }: TableProps) {
+  const [openEditMachines, setOpenEditMachines] = useState(false);
+
+  const handleOpenEditMachines = () => setOpenEditMachines(true);
+
+  const toolbardActions: ToolbarAction[] = [
+    { title: 'Editar Máquinas', icon: <SettingsIcon />, handler: handleOpenEditMachines },
+  ];
+
   return (
     <TableContainer component={Paper}>
-      <TableToolbar />
+      <TableToolbar actions={toolbardActions} />
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -29,9 +39,9 @@ export default function BenchmarkTable({ data, machines }: TableProps) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((benchmark, index) => (
-            <TableRow key={`benchmark-${index}`}>
-              {benchmark.map(value => (
+          {data.map(benchmark => (
+            <TableRow key={`benchmark-${benchmark.id}`}>
+              {Object.values(benchmark.values).map(value => (
                 <TableCell key={value} align="center">
                   {value}
                 </TableCell>
@@ -40,6 +50,7 @@ export default function BenchmarkTable({ data, machines }: TableProps) {
           ))}
         </TableBody>
       </Table>
+      <EditMachines open={openEditMachines} setOpen={setOpenEditMachines} />
     </TableContainer>
   );
 }
