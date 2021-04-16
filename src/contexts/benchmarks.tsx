@@ -16,9 +16,10 @@ interface BenchmarksContext {
 const initialState: BenchmarksContext = {
   machines: ['Máquina A', 'Máquina B', 'Máquina C'],
   benchmarks: [
-    { id: 'Benchmark 1', values: { 'Máquina A': 200, 'Máquina B': 150, 'Máquina C': 300 } },
-    { id: 'Benchmark 2', values: { 'Máquina A': 100, 'Máquina B': 450, 'Máquina C': 50 } },
-    { id: 'Benchmark 3', values: { 'Máquina A': 500, 'Máquina B': 50, 'Máquina C': 250 } },
+    { id: 'Benchmark 1', values: { 'Máquina A': 100, 'Máquina B': 150, 'Máquina C': 300 } },
+    { id: 'Benchmark 2', values: { 'Máquina A': 200, 'Máquina B': 450, 'Máquina C': 50 } },
+    { id: 'Benchmark 3', values: { 'Máquina A': 400, 'Máquina B': 50, 'Máquina C': 250 } },
+    { id: 'Benchmark 4', values: { 'Máquina A': 800, 'Máquina B': 50, 'Máquina C': 250 } },
   ],
   addBenchmark: (newBenchmark: Benchmark) => {},
   deleteBenchmark: (benchmarkId: string) => {},
@@ -59,7 +60,11 @@ export const BenchmarksProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  const getArithmeticMedian = (forMachine: string) => 0;
+  const getArithmeticMedian = (forMachine: string) => {
+    let value = 0;
+    benchmarks.forEach(b => (value += b.values[forMachine]));
+    return benchmarks.length > 0 ? value / benchmarks.length : 0;
+  };
 
   return (
     <BenchmarksContext.Provider
