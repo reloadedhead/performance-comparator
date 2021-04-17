@@ -11,7 +11,7 @@ interface BenchmarksContext {
   deleteMachine: (machineId: string) => void;
   addMachine: (machineId: string, values: number[]) => void;
   getArithmeticMedian: (forMachine: string) => number;
-  getGeometricMedian: (forMachine: string) => number;
+  getGeometricMedian: (forMachine: string, normalizedBy: string) => number;
 }
 
 const initialState: BenchmarksContext = {
@@ -65,12 +65,14 @@ export const BenchmarksProvider = ({ children }: { children: ReactNode }) => {
   const normalizeBenchmark = (benchmarkId: string, machineId: string) => {
     const values = { ...benchmarks.find(b => b.id === benchmarkId)?.values };
     const normalized = { id: benchmarkId, values };
-    const relation = values[machineId] / 100;
+    let relation = 1;
     Object.keys(values)
       .filter(key => key !== machineId)
       .forEach(machine => {
+        relation = values[machineId] / 100;
         normalized.values[machine] = normalized.values[machine] / relation;
       });
+    normalized.values[machineId] = 100;
     return normalized;
   };
 
@@ -80,14 +82,14 @@ export const BenchmarksProvider = ({ children }: { children: ReactNode }) => {
     return benchmarks.length > 0 ? value / benchmarks.length : 0;
   };
 
-  const getGeometricMedian = (forMachine: string) => {
+  const getGeometricMedian = (forMachine: string, normalizedBy: string) => {
     const normalizedBenchmarks: Benchmark[] = [];
     benchmarks.forEach(benchmark => {
-      normalizedBenchmarks.push(normalizeBenchmark(benchmark.id, forMachine));
+      normalizedBenchmarks.push(normalizeBenchmark(benchmark.id, normalizedBy));
     });
 
     let result = 1;
-    benchmarks.forEach(b => {
+    normalizedBenchmarks.forEach(b => {
       result = result * b.values[forMachine];
     });
 
