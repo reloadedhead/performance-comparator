@@ -30,7 +30,8 @@
     "results": {
       "subtitle": "Para cada máquina",
       "arithmeticMedian": "Media Aritmética",
-      "geometricMedian": "Media Geométrica"
+      "geometricMedian": "Media Geométrica",
+      "geometricSubtitle": "Resultados normalizados seguún {{machineId}}"
     }
   }
 }

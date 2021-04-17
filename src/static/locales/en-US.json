@@ -22,7 +22,8 @@
     "results": {
       "subtitle": "For each machine",
       "arithmeticMedian": "Arithmetic Median",
-      "geometricMedian": "Geometric Median"
+      "geometricMedian": "Geometric Median",
+      "geometricSubtitle": "Results normalized by {{machineId}}"
     }
   }
 }

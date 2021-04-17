@@ -16,11 +16,14 @@ const MainPage = () => {
         <ArithmeticResults />
       </Grid>
       <Grid item xs={6}>
+        <GeometricResults />
+      </Grid>
+      {/* <Grid item xs={6}>
         <ResultCard
           title={t('main.results.geometricMedian')}
           results={machines.map(machineId => ({ machineId, value: getGeometricMedian(machineId) }))}
         />
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 };
