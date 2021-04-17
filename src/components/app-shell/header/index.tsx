@@ -8,6 +8,7 @@ import { IconButton, Tooltip } from '@material-ui/core';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Option } from '../../../types';
 import OptionMenu from '../../menus/option-menu';
+import About from '../../modals/about';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,9 +31,15 @@ const Header = () => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [openAbout, setOpenAbout] = useState(false);
 
   const handleOpenMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
+  };
+
+  const handleOpenAbout = () => {
+    setOpenAbout(true);
+    setAnchorEl(null);
   };
 
   const handleCloseMenu = () => setAnchorEl(null);
@@ -51,6 +58,7 @@ const Header = () => {
     {
       label: t('header.menu.about'),
       component: 'button',
+      handler: handleOpenAbout,
     },
   ];
 
@@ -67,6 +75,7 @@ const Header = () => {
         </Tooltip>
       </Toolbar>
       <OptionMenu anchorEl={anchorEl} handleClose={handleCloseMenu} options={menuOptions} />
+      <About open={openAbout} setOpen={setOpenAbout} />
     </AppBar>
   );
 };
