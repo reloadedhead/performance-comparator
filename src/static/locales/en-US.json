@@ -27,5 +27,14 @@
       "weightedMedian": "Weighted Arithmetic Median",
       "weightedSubtitle": "Weighted by the inverse of {{machineId}}'s execution times"
     }
+  },
+  "table": {
+    "optionsMenu": {
+      "editMahcines": "Edit machines",
+      "editBenchmarks": "Edit benchmarks"
+    },
+    "toolbar": {
+      "edit": "Edit"
+    }
   }
 }

@@ -35,5 +35,14 @@
       "weightedMedian": "Media Aritmética Ponderada",
       "weightedSubtitle": "Ponderada por el inverso de tiempos de ejecución de {{machineId}}"
     }
+  },
+  "table": {
+    "optionsMenu": {
+      "editMahcines": "Editar máquinas",
+      "editBenchmarks": "Editar benchmarks"
+    },
+    "toolbar": {
+      "edit": "Editar"
+    }
   }
 }

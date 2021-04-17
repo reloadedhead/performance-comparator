@@ -6,12 +6,13 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Benchmark } from '../../types';
+import { Benchmark, Option } from '../../types';
 import TableToolbar, { ToolbarAction } from './table-toolbar';
 import SettingsIcon from '@material-ui/icons/Settings';
 import EditMachines from '../modals/edit-machines';
-import EditMenu from '../menus/edit-menus';
 import EditBenchmarks from '../modals/edit-benchmarks';
+import OptionMenu from '../menus/option-menu';
+import { useTranslation } from 'react-i18next';
 
 interface TableProps {
   data: Benchmark[];
@@ -22,6 +23,7 @@ export default function BenchmarkTable({ data, machines }: TableProps) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [openEditMachines, setOpenEditMachines] = useState(false);
   const [openEditBenchmarks, setOpenEditBenchmarks] = useState(false);
+  const { t } = useTranslation();
 
   const handleCloseEditMenu = () => setAnchorEl(null);
   const handleOpenEditMachines = () => {
@@ -37,13 +39,21 @@ export default function BenchmarkTable({ data, machines }: TableProps) {
     setAnchorEl(event.currentTarget);
   };
 
-  const editMenuOptions = [
-    { label: 'Editar Máquinas', handler: handleOpenEditMachines },
-    { label: 'Editar Benchmarks', handler: handleOpenEditBenchmarks },
+  const editMenuOptions: Option[] = [
+    {
+      label: t('table.optionsMenu.editMahcines'),
+      handler: handleOpenEditMachines,
+      component: 'button',
+    },
+    {
+      label: t('table.optionsMenu.editBenchmarks'),
+      handler: handleOpenEditBenchmarks,
+      component: 'button',
+    },
   ];
 
   const toolbardActions: ToolbarAction[] = [
-    { title: 'Editar', icon: <SettingsIcon />, handler: handleOpenEditPopover },
+    { title: t('table.toolbar.edit'), icon: <SettingsIcon />, handler: handleOpenEditPopover },
   ];
 
   return (
@@ -71,7 +81,7 @@ export default function BenchmarkTable({ data, machines }: TableProps) {
           ))}
         </TableBody>
       </Table>
-      <EditMenu anchorEl={anchorEl} handleClose={handleCloseEditMenu} options={editMenuOptions} />
+      <OptionMenu anchorEl={anchorEl} handleClose={handleCloseEditMenu} options={editMenuOptions} />
       <EditMachines open={openEditMachines} setOpen={setOpenEditMachines} />
       <EditBenchmarks open={openEditBenchmarks} setOpen={setOpenEditBenchmarks} />
     </TableContainer>
