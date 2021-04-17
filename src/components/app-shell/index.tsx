@@ -2,7 +2,6 @@ import { makeStyles, Theme, createStyles, CssBaseline, Toolbar } from '@material
 import React from 'react';
 import Header from './header';
 import ContentRouter from './router';
-import Sidebar from './sidebar';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,7 +22,6 @@ const AppShell = () => {
     <div className={classes.root}>
       <CssBaseline />
       <Header />
-      <Sidebar />
       <main className={classes.content}>
         <Toolbar />
         <ContentRouter />
