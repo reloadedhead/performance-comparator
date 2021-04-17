@@ -19,9 +19,10 @@ const useToolbarStyles = makeStyles((theme: Theme) =>
     },
     title: {
       flex: '1 1 100%',
+      color: theme.palette.common.white,
     },
     actionButton: {
-      color: theme.palette.common.black,
+      color: theme.palette.common.white,
     },
   })
 );
