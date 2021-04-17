@@ -1,19 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  Chip,
-  createStyles,
-  makeStyles,
-  Theme,
-  Typography,
-} from '@material-ui/core';
-import { Result } from '../../types';
+import { Card, CardHeader, createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
 interface ResultCardProps {
-  results: Result[];
   title: string;
 }
 
@@ -22,16 +11,13 @@ const useStyles = makeStyles((theme: Theme) =>
     header: {
       backgroundColor: theme.palette.primary.main,
     },
-    chip: {
-      margin: theme.spacing(0.5),
-    },
     title: {
       color: '#fff',
     },
   })
 );
 
-const ResultCard: FunctionComponent<ResultCardProps> = ({ results, title }) => {
+const ResultCard: FunctionComponent<ResultCardProps> = ({ title, children }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   return (
@@ -49,18 +35,9 @@ const ResultCard: FunctionComponent<ResultCardProps> = ({ results, title }) => {
           </Typography>
         }
       />
-      <CardContent>
-        {results.map(result => (
-          <Chip
-            key={`benchmark-chip-${result.machineId}`}
-            label={`${result.machineId}: ${result.value.toFixed(2)}`}
-            className={classes.chip}
-          />
-        ))}
-      </CardContent>
+      {children}
     </Card>
   );
 };
 
 export default ResultCard;
-export { default as ArithmeticResults } from './arithmetic';
