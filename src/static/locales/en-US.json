@@ -1,1 +1,14 @@
-{}
+{
+  "header": {
+    "title": "Performance Comparator",
+    "buttons": {
+      "class": "Course Website"
+    },
+    "menu": {
+      "class": "Course Site",
+      "bugReport": "Bug Report",
+      "about": "About this app"
+    },
+    "moreMenu": "Extra options"
+  }
+}

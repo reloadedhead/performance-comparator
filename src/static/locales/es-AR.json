@@ -6,5 +6,17 @@
       "geometric": "Media Geométrica",
       "class": "Sitio de la Cátedra"
     }
+  },
+  "header": {
+    "title": "Comparador de Rendimientos",
+    "buttons": {
+      "class": "Página de la Cátedra"
+    },
+    "menu": {
+      "class": "Página de la Cátedra",
+      "bugReport": "Reportar Bug",
+      "about": "Acerca de esta app"
+    },
+    "moreMenu": "Opciones"
   }
 }
