@@ -31,7 +31,9 @@
       "subtitle": "Para cada máquina",
       "arithmeticMedian": "Media Aritmética",
       "geometricMedian": "Media Geométrica",
-      "geometricSubtitle": "Resultados normalizados seguún {{machineId}}"
+      "geometricSubtitle": "Resultados normalizados seguún {{machineId}}",
+      "weightedMedian": "Media Aritmética Ponderada",
+      "weightedSubtitle": "Ponderada por el inverso de tiempos de ejecución de {{machineId}}"
     }
   }
 }

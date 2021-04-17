@@ -12,6 +12,7 @@ interface BenchmarksContext {
   addMachine: (machineId: string, values: number[]) => void;
   getArithmeticMedian: (forMachine: string) => number;
   getGeometricMedian: (forMachine: string, normalizedBy: string) => number;
+  getWeightedArithmeticMedian: (forMachine: string, weightedBy: string) => number;
 }
 
 const initialState: BenchmarksContext = {
@@ -28,6 +29,7 @@ const initialState: BenchmarksContext = {
   deleteMachine: (machineId: string) => {},
   getArithmeticMedian: (forMachine: string) => 0,
   getGeometricMedian: (forMachine: string) => 0,
+  getWeightedArithmeticMedian: (forMachine: string, weightedBy: string) => 0,
 };
 
 const BenchmarksContext = createContext(initialState);
@@ -96,6 +98,20 @@ export const BenchmarksProvider = ({ children }: { children: ReactNode }) => {
     return Math.pow(result, 1 / benchmarks.length);
   };
 
+  const getWeightedArithmeticMedian = (forMachine: string, weightedBy: string) => {
+    let weight = 0;
+    let relation = 0;
+    let result = 0;
+    benchmarks.forEach(b => (weight = weight + 1 / b.values[weightedBy]));
+
+    benchmarks.forEach(b => {
+      relation = (1 / weight) * (1 / b.values[weightedBy]);
+      result = result + relation * b.values[forMachine];
+    });
+
+    return result;
+  };
+
   return (
     <BenchmarksContext.Provider
       value={{
@@ -107,6 +123,7 @@ export const BenchmarksProvider = ({ children }: { children: ReactNode }) => {
         deleteMachine,
         getArithmeticMedian,
         getGeometricMedian,
+        getWeightedArithmeticMedian,
       }}
     >
       {children}

@@ -1,6 +1,6 @@
 import { Grid } from '@material-ui/core';
 import React from 'react';
-import { ArithmeticResults, GeometricResults } from '../../components/result-card';
+import { ArithmeticResults, GeometricResults, WeightedResults } from '../../components/result-card';
 import BenchmarkTable from '../../components/table';
 import { useBenchmarks } from '../../contexts/benchmarks';
 
@@ -18,12 +18,9 @@ const MainPage = () => {
       <Grid item xs={6}>
         <GeometricResults />
       </Grid>
-      {/* <Grid item xs={6}>
-        <ResultCard
-          title={t('main.results.geometricMedian')}
-          results={machines.map(machineId => ({ machineId, value: getGeometricMedian(machineId) }))}
-        />
-      </Grid> */}
+      <Grid item xs={6}>
+        <WeightedResults />
+      </Grid>
     </Grid>
   );
 };

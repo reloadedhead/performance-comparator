@@ -23,7 +23,9 @@
       "subtitle": "For each machine",
       "arithmeticMedian": "Arithmetic Median",
       "geometricMedian": "Geometric Median",
-      "geometricSubtitle": "Results normalized by {{machineId}}"
+      "geometricSubtitle": "Results normalized by {{machineId}}",
+      "weightedMedian": "Weighted Arithmetic Median",
+      "weightedSubtitle": "Weighted by the inverse of {{machineId}}'s execution times"
     }
   }
 }
