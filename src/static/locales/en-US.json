@@ -17,5 +17,12 @@
       "body": "This app was developed with much love (so wow) by Tomás García Gobet and Matías Gallo in 2019. This app can work offline! If your browser hasn't asked for it yet, you can simply add it to your home screen. This app is open source, so if you want to contribute below, you are more than welcome!",
       "repo": "Repo"
     }
+  },
+  "main": {
+    "results": {
+      "subtitle": "For each machine",
+      "arithmeticMedian": "Arithmetic Median",
+      "geometricMedian": "Geometric Median"
+    }
   }
 }

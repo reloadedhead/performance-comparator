@@ -13,3 +13,8 @@ export type Option = {
   component: 'a' | 'button';
   href?: string;
 };
+
+export type Result = {
+  machineId: string;
+  value: number;
+};

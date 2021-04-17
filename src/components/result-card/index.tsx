@@ -9,24 +9,11 @@ import {
   Theme,
   Typography,
 } from '@material-ui/core';
-import LooksOneIcon from '@material-ui/icons/LooksOne';
-import LooksTwoIcon from '@material-ui/icons/LooksTwo';
-import Looks3Icon from '@material-ui/icons/Looks3';
-import Looks4Icon from '@material-ui/icons/Looks4';
-import Looks5Icon from '@material-ui/icons/Looks5';
-import Looks6Icon from '@material-ui/icons/Looks6';
-
-const iconMap: { [key: number]: JSX.Element } = {
-  0: <LooksOneIcon />,
-  1: <LooksTwoIcon />,
-  2: <Looks3Icon />,
-  3: <Looks4Icon />,
-  4: <Looks5Icon />,
-  5: <Looks6Icon />,
-};
+import { Result } from '../../types';
+import { useTranslation } from 'react-i18next';
 
 interface ResultCardProps {
-  values: number[];
+  results: Result[];
   title: string;
 }
 
@@ -44,8 +31,9 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const ResultCard: FunctionComponent<ResultCardProps> = ({ values, title }) => {
+const ResultCard: FunctionComponent<ResultCardProps> = ({ results, title }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
   return (
     <Card>
       <CardHeader
@@ -57,16 +45,15 @@ const ResultCard: FunctionComponent<ResultCardProps> = ({ values, title }) => {
         }
         subheader={
           <Typography variant="subtitle1" className={classes.title}>
-            {'Para cada máquina'}
+            {t('main.results.subtitle')}
           </Typography>
         }
       />
       <CardContent>
-        {values.map((value, index) => (
+        {results.map(result => (
           <Chip
-            key={`benchmark-chip-${index}`}
-            icon={iconMap[index]}
-            label={value.toFixed(2)}
+            key={`benchmark-chip-${result.machineId}`}
+            label={`${result.machineId}: ${result.value.toFixed(2)}`}
             className={classes.chip}
           />
         ))}
