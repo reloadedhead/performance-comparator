@@ -24,6 +24,13 @@
       "title": "Acerca de esta app",
       "body": "Esta app fue desarrollada con mucho 💝 por Tomás García Gobet y Matías Gallo en el 2019. ¿Sabías que la app puede funcionar offline? ¡Sí! Si el navegador no te lo ofreció, la podés agregar a tu pantalla de inicio. Súper 🆒. Si tenés ganas, podés contribuir al desarrollo de esta app, siguiendo el enlace debajo al repositorio.",
       "repo": "Repo"
+    },
+    "editMachines": {
+      "addMachine": "Agregar máquina",
+      "newMachineId": "ID de la máquina",
+      "valueForBenchmark": "Valor para el benchmark {{id}}",
+      "addNewMachine": "Agregar nueva máquina",
+      "cancelEditing": "Cancelar"
     }
   },
   "main": {
