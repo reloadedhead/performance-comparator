@@ -36,7 +36,10 @@
       "newBenchmarkId": "ID del Benchmark",
       "valueForMachine": "Valor para la máquina {{id}}",
       "addNewBenchmark": "Agregar nuevo benchmark",
-      "addBenchmark": "Agregar benchmark"
+      "addBenchmark": "Agregar benchmark",
+      "deleteBenchmark": "Eliminar benchmark",
+      "title": "Editar Benchmarks",
+      "cancelEditing": "Cancelar"
     }
   },
   "main": {

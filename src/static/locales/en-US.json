@@ -29,7 +29,9 @@
       "newBenchmarkId": "Benchmark ID",
       "cancelEditing": "Cancel",
       "addNewBenchmark": "Add new benchmark",
-      "addBenchmark": "Add benchmark"
+      "addBenchmark": "Add benchmark",
+      "deleteBenchmark": "Delete benchmark",
+      "title": "Edit Benchmarks"
     }
   },
   "main": {

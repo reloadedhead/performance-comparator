@@ -55,7 +55,7 @@ const EditBenchmarks: FunctionComponent<EditBenchmarksProps> = ({ open, setOpen 
     <ListItem>
       <ListItemText>{benchmarkId}</ListItemText>
       <ListItemSecondaryAction>
-        <Tooltip title="Eliminar">
+        <Tooltip title={t('modals.editBenchmarks.deleteBenchmark').toString()}>
           <span>
             <IconButton
               disabled={isAddingNewBenchmark}
@@ -96,7 +96,7 @@ const EditBenchmarks: FunctionComponent<EditBenchmarksProps> = ({ open, setOpen 
   return (
     <Dialog fullWidth open={open} onClose={handleClose}>
       <form onSubmit={handleAddNewBenchmark}>
-        <DialogTitle>{'Editar Benchmarks'}</DialogTitle>
+        <DialogTitle>{t('modals.editBenchmarks.title')}</DialogTitle>
         <DialogContent>
           <List>
             {benchmarks.map(benchmark => (
