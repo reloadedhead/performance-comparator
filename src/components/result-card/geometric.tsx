@@ -3,6 +3,7 @@ import { CardContent, Chip, createStyles, makeStyles, Theme, Typography } from '
 import { useTranslation } from 'react-i18next';
 import ResultCard from './card';
 import { useBenchmarks } from '../../contexts/benchmarks';
+import geometricFormula from '../../static/images/geometric.png';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,7 +22,11 @@ const GeometricResults = () => {
   const { machines, getGeometricMedian } = useBenchmarks();
 
   return (
-    <ResultCard title={t('main.results.geometricMedian')}>
+    <ResultCard
+      title={t('main.results.geometricMedian')}
+      formulaName="geometricMedian"
+      formulaSource={geometricFormula}
+    >
       <CardContent>
         {machines.map(normalizedByMachineId => (
           <div className={classes.row} key={normalizedByMachineId}>

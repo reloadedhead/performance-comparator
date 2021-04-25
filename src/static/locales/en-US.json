@@ -32,6 +32,9 @@
       "addBenchmark": "Add benchmark",
       "deleteBenchmark": "Delete benchmark",
       "title": "Edit Benchmarks"
+    },
+    "formulaViewer": {
+      "title": "{{formula}}'s Formula"
     }
   },
   "main": {
@@ -41,7 +44,8 @@
       "geometricMedian": "Geometric Median",
       "geometricSubtitle": "Results normalized by {{machineId}}",
       "weightedMedian": "Weighted Arithmetic Median",
-      "weightedSubtitle": "Weighted by the inverse of {{machineId}}'s execution times"
+      "weightedSubtitle": "Weighted by the inverse of {{machineId}}'s execution times",
+      "openFormula": "Open formula"
     }
   },
   "table": {
@@ -52,5 +56,10 @@
     "toolbar": {
       "edit": "Edit"
     }
+  },
+  "formulas": {
+    "arithmeticMedian": "Arithmetic Median",
+    "geometricMedian": "Geometric Median",
+    "weightedArithmeticMedian": "Weighted Arithmetic Median"
   }
 }

@@ -3,6 +3,7 @@ import { CardContent, Chip, createStyles, makeStyles, Theme, Typography } from '
 import { useTranslation } from 'react-i18next';
 import ResultCard from './card';
 import { useBenchmarks } from '../../contexts/benchmarks';
+import weightedFormula from '../../static/images/weighted.png';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,7 +22,11 @@ const WeightedResults = () => {
   const { machines, getWeightedArithmeticMedian } = useBenchmarks();
 
   return (
-    <ResultCard title={t('main.results.weightedMedian')}>
+    <ResultCard
+      title={t('main.results.weightedMedian')}
+      formulaName="weightedArithmeticMedian"
+      formulaSource={weightedFormula}
+    >
       <CardContent>
         {machines.map(weightedByMachineId => (
           <div className={classes.row} key={weightedByMachineId}>

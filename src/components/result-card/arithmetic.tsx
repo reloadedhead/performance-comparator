@@ -3,6 +3,7 @@ import { CardContent, Chip, createStyles, makeStyles, Theme } from '@material-ui
 import { useTranslation } from 'react-i18next';
 import ResultCard from './card';
 import { useBenchmarks } from '../../contexts/benchmarks';
+import ArithmeticMedian from '../../static/images/arithmeticMedian.png';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,7 +23,11 @@ const ArithmeticResults = () => {
     value: getArithmeticMedian(machineId),
   }));
   return (
-    <ResultCard title={t('main.results.arithmeticMedian')}>
+    <ResultCard
+      title={t('main.results.arithmeticMedian')}
+      formulaName="arithmeticMedian"
+      formulaSource={ArithmeticMedian}
+    >
       <CardContent>
         {results.map(result => (
           <Chip

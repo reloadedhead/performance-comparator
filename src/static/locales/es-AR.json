@@ -40,6 +40,9 @@
       "deleteBenchmark": "Eliminar benchmark",
       "title": "Editar Benchmarks",
       "cancelEditing": "Cancelar"
+    },
+    "formulaViewer": {
+      "title": "Fórmula para {{formula}}"
     }
   },
   "main": {
@@ -49,7 +52,8 @@
       "geometricMedian": "Media Geométrica",
       "geometricSubtitle": "Resultados normalizados seguún {{machineId}}",
       "weightedMedian": "Media Aritmética Ponderada",
-      "weightedSubtitle": "Ponderada por el inverso de tiempos de ejecución de {{machineId}}"
+      "weightedSubtitle": "Ponderada por el inverso de tiempos de ejecución de {{machineId}}",
+      "openFormula": "Abrir fórmula"
     }
   },
   "table": {
@@ -60,5 +64,10 @@
     "toolbar": {
       "edit": "Editar"
     }
+  },
+  "formulas": {
+    "arithmeticMedian": "Media Aritmética",
+    "geometricMedian": "Media Geométrica",
+    "weightedArithmeticMedian": "Media Aritmética Ponderada"
   }
 }

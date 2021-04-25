@@ -18,3 +18,5 @@ export type Result = {
   machineId: string;
   value: number;
 };
+
+export type Formula = 'arithmeticMedian' | 'geometricMedian' | 'weightedArithmeticMedian';
