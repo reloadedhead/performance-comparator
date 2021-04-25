@@ -86,7 +86,7 @@ const EditBenchmarks: FunctionComponent<EditBenchmarksProps> = ({ open, setOpen 
             fullWidth
             type="number"
             name={m}
-            label={t('modals.editBenchmarks.valueForMachine', { machine: m })}
+            label={t('modals.editBenchmarks.valueForMachine', { id: m })}
           />
         </ListItem>
       ))}
