@@ -1,5 +1,6 @@
 import { makeStyles, Theme, createStyles, CssBaseline, Toolbar } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
+import NewVersion from '../modals/new-version';
 import Header from './header';
 import ContentRouter from './router';
 
@@ -18,6 +19,12 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const AppShell = () => {
   const classes = useStyles();
+  const [isNewVersionOpen, setIsNewVersionOpen] = useState(false);
+
+  const handleOpenNewVersionModal = () => setIsNewVersionOpen(true);
+
+  document.addEventListener('new-version', handleOpenNewVersionModal);
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -26,6 +33,7 @@ const AppShell = () => {
         <Toolbar />
         <ContentRouter />
       </main>
+      <NewVersion open={isNewVersionOpen} setOpen={setIsNewVersionOpen} />
     </div>
   );
 };

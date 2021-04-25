@@ -35,6 +35,11 @@
     },
     "formulaViewer": {
       "title": "{{formula}}'s Formula"
+    },
+    "newVersion": {
+      "title": "New Version Available",
+      "body": "There is a new version available for this application. Since this is a PWA, you can receive updates! To get your fresh-new content, please reloaad the page.",
+      "refresh": "Refresh"
     }
   },
   "main": {

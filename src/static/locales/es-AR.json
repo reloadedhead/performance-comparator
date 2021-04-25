@@ -43,6 +43,11 @@
     },
     "formulaViewer": {
       "title": "Fórmula para {{formula}}"
+    },
+    "newVersion": {
+      "title": "Nueva versión disponible",
+      "body": "Hay una nueva versión de esta app. Como esta app es una PWA, podés recibir actualizaciones de esta manera. Para poder ver el nuevo contenido, por favor recargá la página.",
+      "refresh": "Recargar"
     }
   },
   "main": {
