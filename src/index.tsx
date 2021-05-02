@@ -7,6 +7,7 @@ import AppShell from './components/app-shell';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
 import { BrowserRouter } from 'react-router-dom';
+import { PersistanceProvider } from './contexts/persistance';
 
 const WrappedApp = () => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -34,9 +35,11 @@ const WrappedApp = () => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <I18nextProvider i18n={i18n}>
-      <WrappedApp />
-    </I18nextProvider>
+    <PersistanceProvider>
+      <I18nextProvider i18n={i18n}>
+        <WrappedApp />
+      </I18nextProvider>
+    </PersistanceProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

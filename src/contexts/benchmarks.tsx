@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React, { createContext, ReactNode, useContext, useState } from 'react';
+import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { Benchmark } from '../types';
+import { usePersistance } from './persistance';
 
 interface BenchmarksContext {
   benchmarks: Benchmark[];
@@ -37,6 +38,24 @@ const BenchmarksContext = createContext(initialState);
 export const BenchmarksProvider = ({ children }: { children: ReactNode }) => {
   const [benchmarks, setBenchmarks] = useState<Benchmark[]>(initialState.benchmarks);
   const [machines, setMachines] = useState<string[]>(initialState.machines);
+  const { retrieve, persist } = usePersistance();
+
+  useEffect(() => {
+    const savedBenchmarks = retrieve('benchmarks');
+    const savedMachines = retrieve('machines');
+    if (savedBenchmarks && savedMachines) {
+      setBenchmarks(savedBenchmarks as Benchmark[]);
+      setMachines(savedMachines as string[]);
+    }
+  }, []);
+
+  useEffect(() => {
+    persist('benchmarks', benchmarks);
+  }, [benchmarks]);
+
+  useEffect(() => {
+    persist('machines', machines);
+  }, [machines]);
 
   const addBenchmark = (newBenchmark: Benchmark) =>
     setBenchmarks(benchs => [...benchs, newBenchmark]);
