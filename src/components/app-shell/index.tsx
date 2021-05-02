@@ -7,9 +7,6 @@ import ContentRouter from './router';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     toolbar: theme.mixins.toolbar,
-    root: {
-      display: 'flex',
-    },
     content: {
       flexGrow: 1,
       padding: theme.spacing(3),
@@ -26,7 +23,7 @@ const AppShell = () => {
   document.addEventListener('new-version', handleOpenNewVersionModal);
 
   return (
-    <div className={classes.root}>
+    <div>
       <CssBaseline />
       <Header />
       <main className={classes.content}>
